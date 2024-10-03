@@ -206,7 +206,6 @@ ax6.set_xticks([0, 50, 100, 150, 200], ['0', '50', '100', '150', '200'])
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 # ax7.legend(loc='center', fontsize=14)
 ax7.scatter([], [], label='LV', marker=markers[0], color=cud_palette[0])
 ax7.scatter([], [], label='CLV', marker=markers[1], color=cud_palette[1])

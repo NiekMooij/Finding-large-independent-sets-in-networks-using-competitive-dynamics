@@ -18,22 +18,29 @@ This Python package provides efficient algorithms for calculating maximal indepe
 
 - **Lotka-Volterra Algorithm:** Efficient implementation of the Lotka-Volterra algorithm for maximal independent set calculation.
 - **Continuation Algorithm:** The Continuation Clgorithm to find maximal independent sets in graphs.
-- **Greedy Algorithm:** Implementation of the Greedy algorithm for maximal independent set approximation, where we select vertices based on the minimum degree.
+- **Minimum Degree Greedy Algorithm:** Implementation of the Minimum Degree Greedy algorithm for maximal independent set approximation, where we select vertices based on the minimum degree.
 - **Exact Algorithm:** An exact algorithm to find the exact maximal independent set in a given graph. Used much functionality from the PuLP package!
+- **Random-Priority Parallel Algorithm:** An approximation algorithm to the maximum independent set problem.
+- **Luby Algorithm:** An approximation algorithm to the maximum independent set problem.
+- **Blelloch Algorithm:** An approximation algorithm to the maximum independent set problem.
 
 ## Installation
-You can install the package using pip:
 
+You can install the package using pip (~20 seconds on MacBook Pro 2022 Sonoma 14.7 (Apple M2, RAM 16GB)):
 ```bash
 pip install MIS-algorithms
 ```
 
 ## Example
+
 ```python
 import MIS_algorithms as MIS
 LV_output  = MIS.lotka_volterra(G, tau=1.1, x0=np.random.random(len(G)))
 continuation_output  = MIS.continuation(G)
 greedy_output  = MIS.greedy(G)
+rpp_output  = MIS.random_priority_parallel(G)
+luby_output  = MIS.luby(G)
+blelloch_output  = MIS.blelloch(G)
 ```
 
 ## Usage
