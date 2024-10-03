@@ -144,6 +144,11 @@ colors_5[5] = cud_palette[1]
 colors_5[1] = cud_palette[1]
 H5.remove_edges_from(edges_removed)
 
+H6 = G.copy()
+edges_removed = [ ]
+colors_6 = colors_5
+H6.remove_edges_from(edges_removed)
+
 # Draw the networks
 node_size = 400
 edge_width = 2
@@ -166,27 +171,33 @@ nx.draw_networkx_labels(H4, ax=ax4, pos=pos, labels=labels, font_color='white')
 nx.draw(H5, ax=ax5, pos=pos, with_labels=False, node_size=node_size, node_color=colors_5, edge_color=edge_color, width=edge_width, edgecolors='black')
 nx.draw_networkx_labels(H5, ax=ax5, pos=pos, labels=labels, font_color='white')
 
-# Add text
-ax6.set_xlabel('')
-ax6.set_ylabel('')
-ax6.set_xticks([])
-ax6.set_yticks([])
-ax6.set_xticklabels([])
-ax6.set_yticklabels([])
-ax6.spines['top'].set_visible(False)
-ax6.spines['right'].set_visible(False)
-ax6.spines['bottom'].set_visible(False)
-ax6.spines['left'].set_visible(False)
+nx.draw(H6, ax=ax6, pos=pos, with_labels=False, node_size=node_size, node_color=colors_6, edge_color=edge_color, width=edge_width, edgecolors='black')
+nx.draw_networkx_labels(H6, ax=ax6, pos=pos, labels=labels, font_color='white')
 
-ax6.text(0.07, 0.35, '{6,7,8} → MIS', fontsize = 18)
+# Add text
+# ax6.set_xlabel('')
+# ax6.set_ylabel('')
+# ax6.set_xticks([])
+# ax6.set_yticks([])
+# ax6.set_xticklabels([])
+# ax6.set_yticklabels([])
+# ax6.spines['top'].set_visible(False)
+# ax6.spines['right'].set_visible(False)
+# ax6.spines['bottom'].set_visible(False)
+# ax6.spines['left'].set_visible(False)
+
+# ax6.text(0.07, 0.35, '{6,7,8} → MIS', fontsize = 18)
 
 captions = [ '(a)', '(b)', '(c)', '(d)', '(e)', '(f)' ]
-for index, ax in enumerate([ax1, ax2, ax3, ax4, ax5]):
+for index, ax in enumerate([ax1, ax2, ax3, ax4, ax5, ax6]):
     ax.margins(0.1)
     ax.set_xlim([-1, 1.25])
     ax.set_ylim([-0.9, 1])
-    
     ax.text(0, -1.1, captions[index], fontsize=14)
+    
+# ax6.margins(0.1)
+# ax6.set_xlim([-1, 1.25])
+# ax6.set_ylim([-0.9, 1])
 
 big_ax.text(0.0046, 1.08, '(a)', fontsize=14)
 big_ax.text(0.244, -0.25, '(b)', fontsize=14)
