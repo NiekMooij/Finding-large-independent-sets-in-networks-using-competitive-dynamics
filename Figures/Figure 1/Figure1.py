@@ -34,6 +34,9 @@ ax5 = fig.add_subplot(gs[3, 10:18])
 ax6 = fig.add_subplot(gs[3, 20:28])
 fig.subplots_adjust(wspace=0.3, hspace=0.3)
 
+big_ax.text(x=-0.06, y=1.07, s='a', ha='center', transform=big_ax.transAxes, fontsize=18)
+ax1.text(x=-0.22, y=1.07, s='b', ha='center', transform=ax1.transAxes, fontsize=18)
+
 # Define the used color palette
 cud_palette = [
     '#0101fd',  # Blue
@@ -188,26 +191,27 @@ nx.draw_networkx_labels(H6, ax=ax6, pos=pos, labels=labels, font_color='white')
 
 # ax6.text(0.07, 0.35, '{6,7,8} → MIS', fontsize = 18)
 
-captions = [ '(a)', '(b)', '(c)', '(d)', '(e)', '(f)' ]
+# captions = [ 'i', 'ii', 'iii', 'iv', 'v', 'vi' ]
+captions = [ '*', '**', '***', '***\n*', '***\n**', '***\n***' ]
+
 for index, ax in enumerate([ax1, ax2, ax3, ax4, ax5, ax6]):
     ax.margins(0.1)
     ax.set_xlim([-1, 1.25])
     ax.set_ylim([-0.9, 1])
-    ax.text(0, -1.1, captions[index], fontsize=14)
+    ax.text(x=0, y=0.9, s=captions[index], linespacing=0.3, transform=ax.transAxes, fontsize=12)
     
 # ax6.margins(0.1)
 # ax6.set_xlim([-1, 1.25])
 # ax6.set_ylim([-0.9, 1])
-
-big_ax.text(0.0046, 1.08, '(a)', fontsize=14)
-big_ax.text(0.244, -0.25, '(b)', fontsize=14)
-big_ax.text(0.327, -0.25, '(c)', fontsize=14)
-big_ax.text(0.463, -0.25, '(d)', fontsize=14)
-big_ax.text(1.0046, 1.07, '(e)', fontsize=14)
+big_ax.text(0.006, 1.06, '*', fontsize=12, linespacing=0.3)
+big_ax.text(0.25, -0.22, '**', fontsize=12, linespacing=0.3)
+big_ax.text(0.333, -0.22, '***', fontsize=12, linespacing=0.3)
+big_ax.text(0.461, -0.22, '***\n*', fontsize=12, linespacing=0.3)
+big_ax.text(1.0046, 1.06, '***\n**', fontsize=12, linespacing=0.3)
 big_ax.hlines(1, -1, 1.3, 'black', alpha=0.5)
 big_ax.hlines(0, -1, 1.3, 'black', alpha=0.5)
-big_ax.text(0.51, -0.15, r'$\tau$', fontsize=14)
-big_ax.set_ylabel(r'$x^{\ast}$', fontsize=14)
+big_ax.text(0.51, -0.15, r'$\tau$', fontsize=12)
+big_ax.set_ylabel(r'$x^{\ast}$', fontsize=12)
 big_ax.legend(loc='center left', bbox_to_anchor=(-0.006, 0.34), fontsize=10)
 big_ax.set_ylim([-0.02, 1.02])
 big_ax.set_xticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], ['0.0', '0.2', '0.4', '0.6', '0.8', '1.0'], fontsize=14)
@@ -217,7 +221,6 @@ big_ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0], ['0.0', '0.2', '0.4', '0.6', '0.
 ax1.axvline(1.5, -1.6, 1, color='grey', clip_on=False, alpha=0.6)
 ax2.axvline(1.5, -1.6, 1, color='grey', clip_on=False, alpha=0.6)
 ax2.axhline(-1.4, -1.4, 2.4, color='grey', clip_on=False, alpha=0.6)
-
 
 plt.savefig(os.path.join(sys.path[0], 'Figure1.pdf'), dpi=900, transparent=True, bbox_inches='tight')
 plt.show()

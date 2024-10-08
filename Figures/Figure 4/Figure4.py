@@ -21,31 +21,45 @@ cud_palette = [
 
 markers = ['s', 'o', '^', 'X', 'p', 'P']
 
-fig, ((ax1, ax2, ax7), (ax3, ax4, ax8), (ax5, ax6, ax9)) = plt.subplots(ncols=3, nrows=3, figsize=(10,10))
+fig, ((ax1, ax7, ax2), (ax3, ax4, ax8), (ax5, ax6, ax9)) = plt.subplots(ncols=3, nrows=3, figsize=(10,10))
 fig.subplots_adjust(wspace=0.45, hspace=0.6)
 plt.suptitle("Erdős-Rényi", fontsize=18, y=0.96)
+
+ax1.text(x=-0.15, y=1.13, s='a', ha='center', transform=ax1.transAxes, fontsize=18)
+ax2.text(x=-0.15, y=1.13, s='c', ha='center', transform=ax2.transAxes, fontsize=18)
+ax3.text(x=-0.15, y=1.13, s='d', ha='center', transform=ax3.transAxes, fontsize=18)
+ax4.text(x=-0.15, y=1.13, s='e', ha='center', transform=ax4.transAxes, fontsize=18)
+ax5.text(x=-0.15, y=1.13, s='g', ha='center', transform=ax5.transAxes, fontsize=18)
+ax6.text(x=-0.15, y=1.13, s='h', ha='center', transform=ax6.transAxes, fontsize=18)
+ax7.text(x=-0.15, y=1.13, s='b', ha='center', transform=ax7.transAxes, fontsize=18)
+ax8.text(x=-0.15, y=1.13, s='f', ha='center', transform=ax8.transAxes, fontsize=18)
+ax9.text(x=-0.15, y=1.13, s='i', ha='center', transform=ax9.transAxes, fontsize=18)
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
 # probability
 df = pd.read_pickle(os.path.join(sys.path[0], f"data/erdos_renyi_probability.pkl"))
 
-ax2.errorbar(df['p_connection'], df['LV_app'], yerr=(df['LV_app'] - df['LV_app_CI_lower'], df['LV_app_CI_upper'] - df['LV_app']), marker=markers[0], color=cud_palette[0], capsize=3)
+std_number = 10
+
+# ax2.errorbar(df['p_connection'], df['LV_app'], yerr=(df['LV_app'] - df['LV_app_CI_lower'], df['LV_app_CI_upper'] - df['LV_app']), marker=markers[0], color=cud_palette[0], capsize=3)
+
+ax2.errorbar(df['p_connection'], df['LV_app'], yerr=(std_number*(df['LV_app'] - df['LV_app_CI_lower']), std_number*(df['LV_app_CI_upper'] - df['LV_app'])), marker=markers[0], color=cud_palette[0], capsize=3)
 ax2.scatter([], [], label='LV', marker=markers[0], color=cud_palette[0])
 
-ax2.errorbar(df['p_connection'], df['greedy_app'], yerr=(df['greedy_app'] - df['greedy_app_CI_lower'], df['greedy_app_CI_upper'] - df['greedy_app']), marker=markers[2], color=cud_palette[2], capsize=3)
+ax2.errorbar(df['p_connection'], df['greedy_app'], yerr=(std_number*(df['greedy_app'] - df['greedy_app_CI_lower']), std_number*(df['greedy_app_CI_upper'] - df['greedy_app'])), marker=markers[2], color=cud_palette[2], capsize=3)
 ax2.scatter([], [], label='MDG', marker=markers[2], color=cud_palette[2])
 
-ax2.errorbar(df['p_connection'], df['rpp_app'], yerr=(df['rpp_app'] - df['rpp_app_CI_lower'], df['rpp_app_CI_upper'] - df['rpp_app']), marker=markers[3], color=cud_palette[3], capsize=3)
+ax2.errorbar(df['p_connection'], df['rpp_app'], yerr=(std_number*(df['rpp_app'] - df['rpp_app_CI_lower']), std_number*(df['rpp_app_CI_upper'] - df['rpp_app'])), marker=markers[3], color=cud_palette[3], capsize=3)
 ax2.scatter([], [], label='RPP', marker=markers[3], color=cud_palette[3])
 
-ax2.errorbar(df['p_connection'], df['luby_app'], yerr=(df['luby_app'] - df['luby_app_CI_lower'], df['luby_app_CI_upper'] - df['luby_app']), marker=markers[4], color=cud_palette[4], capsize=3)
+ax2.errorbar(df['p_connection'], df['luby_app'], yerr=(std_number*(df['luby_app'] - df['luby_app_CI_lower']), std_number*(df['luby_app_CI_upper'] - df['luby_app'])), marker=markers[4], color=cud_palette[4], capsize=3)
 ax2.scatter([], [], label='Luby', marker=markers[4], color=cud_palette[4])
 
-ax2.errorbar(df['p_connection'], df['blelloch_app'], yerr=(df['blelloch_app'] - df['blelloch_app_CI_lower'], df['blelloch_app_CI_upper'] - df['blelloch_app']), marker=markers[5], color=cud_palette[5], capsize=3)
+ax2.errorbar(df['p_connection'], df['blelloch_app'], yerr=(std_number*(df['blelloch_app'] - df['blelloch_app_CI_lower']), std_number*(df['blelloch_app_CI_upper'] - df['blelloch_app'])), marker=markers[5], color=cud_palette[5], capsize=3)
 ax2.scatter([], [], label='Blelloch', marker=markers[5], color=cud_palette[5])
 
-ax2.errorbar(df['p_connection'], df['continuation_app'], yerr=(df['continuation_app'] - df['continuation_app_CI_lower'], df['continuation_app_CI_upper'] - df['continuation_app']), marker=markers[1], color=cud_palette[1], capsize=3)
+ax2.errorbar(df['p_connection'], df['continuation_app'], yerr=(std_number*(df['continuation_app'] - df['continuation_app_CI_lower']), std_number*(df['continuation_app_CI_upper'] - df['continuation_app'])), marker=markers[1], color=cud_palette[1], capsize=3)
 ax2.scatter([], [], label='CLV', marker=markers[1], color=cud_palette[1])
 
 # ax2.legend()
@@ -248,7 +262,7 @@ ax8.scatter([], [], label='CLV', marker=markers[1], color=cud_palette[1])
 ax8.set_xlabel('Size (n)')
 ax8.set_ylabel('Worst-case')
 ax8.set_xticks([0, 50, 100, 150, 200], ['0', '50', '100', '150', '200'])
-ax8.set_yticks([0.4, 0.5, 0.6, 0.7, 0.8], ['0.4', '0.5', '0.6', '0.7', '0.8'])
+ax8.set_yticks([0.3, 0.4, 0.5, 0.6, 0.7, 0.8], ['0.3', '0.4', '0.5', '0.6', '0.7', '0.8'])
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -281,34 +295,26 @@ ax9.set_yticks([0.2, 0.3, 0.4, 0.5, 0.6, 0.7], ['0.2', '0.3', '0.4', '0.5', '0.6
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
-numbers = [ 'a', 'b', 'c' ]
 for index, ax in enumerate([ ax1, ax2, ax7 ]):
     if index == 0:
-        ax.text(0.5, 1.05, f'({numbers[index]}) ' + r'$n=60$', ha='center', transform=ax.transAxes, fontsize=12)    
+        ax.text(0.5, 1.05, r'$n=60$', ha='center', transform=ax.transAxes, fontsize=12)    
         # ax.legend(loc='lower left', fontsize=8)
-    elif index == 1:
-        ax.text(0.5, 1.05, f'({numbers[index]})', ha='center', transform=ax.transAxes, fontsize=12)
-        # ax.legend(loc='lower left', fontsize=8, ncol=2)
-    else:
-        ax.text(0.5, 1.05, f'({numbers[index]})', ha='center', transform=ax.transAxes, fontsize=12)
-    
+
     ax.tick_params(axis='x', labelsize=12)
     ax.tick_params(axis='y', labelsize=12)
     ax.set_xlabel( ax.get_xlabel(), fontsize=12)
     ax.set_ylabel( ax.get_ylabel(), fontsize=12)
     
-numbers = [ 'd', 'e', 'f' ]
 for index, ax in enumerate([ ax3, ax4, ax8 ]):
-    ax.text(0.5, 1.05, f'({numbers[index]}) ' + r'$p = \log(n) / n$', ha='center', transform=ax.transAxes, fontsize=12)    
+    ax.text(0.5, 1.05, r'$p = \log(n) / n, \langle k \rangle \approx \log(n)$', ha='center', transform=ax.transAxes, fontsize=12)    
     ax.tick_params(axis='x', labelsize=12)
     ax.tick_params(axis='y', labelsize=12)
     ax.set_xlabel( ax.get_xlabel(), fontsize=12)
     ax.set_ylabel( ax.get_ylabel(), fontsize=12)
     # ax.legend(loc='lower left', fontsize=8, ncol=2)
     
-numbers = [ 'g', 'h', 'i' ]
 for index, ax in enumerate([ ax5, ax6, ax9 ]):
-    ax.text(0.5, 1.05, f'({numbers[index]}) ' + r'$p = 1/2$', ha='center', transform=ax.transAxes, fontsize=12)    
+    ax.text(0.5, 1.05, r'$p = 1/2, \langle k \rangle \approx n/2$', ha='center', transform=ax.transAxes, fontsize=12)    
     ax.tick_params(axis='x', labelsize=12)
     ax.tick_params(axis='y', labelsize=12)
     ax.set_xlabel( ax.get_xlabel(), fontsize=12)

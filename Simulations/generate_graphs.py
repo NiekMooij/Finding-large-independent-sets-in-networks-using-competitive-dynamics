@@ -198,7 +198,7 @@ def generate_graphs(number_of_runs, size_domain, overwrite=False):
     print('\nStart generating barabasi-albert graphs')
     if overwrite or not os.path.exists(os.path.join(sys.path[0], 'data_empty/barabasi_albert_probability.csv')):
         print('Barabasi-albert - probability started.')
-        rows = [ generate_row_barabasi_albert(60, int(1 +  k * (60 - 1) / 10)) for k in range(11) for i in range(number_of_runs) ]
+        rows = [ generate_row_barabasi_albert(150, m) for m in [2, 4, 6, 8] for i in range(number_of_runs) ]
         df = pd.DataFrame(rows)
         df.to_csv(os.path.join(sys.path[0], 'data_empty/barabasi_albert_probability.csv'), index=False)
         df.to_pickle(os.path.join(sys.path[0], 'data_empty/barabasi_albert_probability.pkl'))
@@ -209,12 +209,5 @@ def generate_graphs(number_of_runs, size_domain, overwrite=False):
         df = pd.DataFrame(rows)
         df.to_csv(os.path.join(sys.path[0], 'data_empty/barabasi_albert_size_sparse.csv'), index=False)
         df.to_pickle(os.path.join(sys.path[0], 'data_empty/barabasi_albert_size_sparse.pkl'))
-
-    if overwrite or not os.path.exists(os.path.join(sys.path[0], 'data_empty/barabasi_albert_size_dense.csv')):
-        print('Barabasi-albert - dense started.')
-        rows = [ generate_row_barabasi_albert(size, int(size/2)) for size in size_domain for i in range(number_of_runs)]
-        df = pd.DataFrame(rows)
-        df.to_csv(os.path.join(sys.path[0], 'data_empty/barabasi_albert_size_dense.csv'), index=False)
-        df.to_pickle(os.path.join(sys.path[0], 'data_empty/barabasi_albert_size_dense.pkl'))
     
     print('Barabasi-albert graphs generated')

@@ -7,6 +7,7 @@ import sys
 import MIS_algorithms as MIS
 from generate_graphs import generate_graphs
 from analyse_graphs import analyse_graphs
+from histogram import get_histograms
 
 if __name__ == '__main__':
     number_of_runs = 1000
@@ -17,3 +18,7 @@ if __name__ == '__main__':
     print('All graphs generated')
     
     analyse_graphs(save_after_n_runs)
+    print('All graphs analysed')
+
+    get_histograms()
+    print('All histograms generated')

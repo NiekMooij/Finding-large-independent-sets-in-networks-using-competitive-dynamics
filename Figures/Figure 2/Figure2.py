@@ -51,6 +51,10 @@ if __name__ == "__main__":
     fig, (ax1, ax2) = plt.subplots(nrows=1, ncols=2, figsize=(12,4))
     fig.subplots_adjust(hspace=0.3, wspace=0.25)
 
+    ax1.text(x=-0.12, y=1.07, s='a', ha='center', transform=ax1.transAxes, fontsize=18)
+    ax2.text(x=-0.12, y=1.07, s='b', ha='center', transform=ax2.transAxes, fontsize=18)
+
+
     # Odd case
     size = 11
     G = get_path_graph(size)

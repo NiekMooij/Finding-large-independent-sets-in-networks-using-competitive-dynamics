@@ -21,9 +21,19 @@ cud_palette = [
 
 markers = ['s', 'o', '^', 'X', 'p', 'P']
 
-fig, ((ax1, ax2, ax7), (ax3, ax4, ax8), (ax5, ax6, ax9)) = plt.subplots(ncols=3, nrows=3, figsize=(10,10))
+fig, ((ax1, ax7, ax2), (ax3, ax4, ax8), (ax5, ax6, ax9)) = plt.subplots(ncols=3, nrows=3, figsize=(10,10))
 fig.subplots_adjust(wspace=0.45, hspace=0.6)
 plt.suptitle("Random bipartite", fontsize=18, y=0.96)
+
+ax1.text(x=-0.15, y=1.13, s='a', ha='center', transform=ax1.transAxes, fontsize=18)
+ax2.text(x=-0.15, y=1.13, s='c', ha='center', transform=ax2.transAxes, fontsize=18)
+ax3.text(x=-0.15, y=1.13, s='d', ha='center', transform=ax3.transAxes, fontsize=18)
+ax4.text(x=-0.15, y=1.13, s='e', ha='center', transform=ax4.transAxes, fontsize=18)
+ax5.text(x=-0.15, y=1.13, s='g', ha='center', transform=ax5.transAxes, fontsize=18)
+ax6.text(x=-0.15, y=1.13, s='h', ha='center', transform=ax6.transAxes, fontsize=18)
+ax7.text(x=-0.15, y=1.13, s='b', ha='center', transform=ax7.transAxes, fontsize=18)
+ax8.text(x=-0.15, y=1.13, s='f', ha='center', transform=ax8.transAxes, fontsize=18)
+ax9.text(x=-0.15, y=1.13, s='i', ha='center', transform=ax9.transAxes, fontsize=18)
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -283,34 +293,25 @@ ax9.set_xticks([0, 50, 100, 150, 200], ['0', '50', '100', '150', '200'])
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------
 
-numbers = [ 'a', 'b', 'c' ]
 for index, ax in enumerate([ ax1, ax2, ax7 ]):
     if index == 0:
-        ax.text(0.5, 1.05, f'({numbers[index]}) ' + r'$n=60$', ha='center', transform=ax.transAxes, fontsize=12)    
-        # ax.legend(loc='lower left', fontsize=8)
-    elif index == 1:
-        ax.text(0.5, 1.05, f'({numbers[index]})', ha='center', transform=ax.transAxes, fontsize=12)
-        # ax.legend(loc='lower left', fontsize=8, ncol=2)
-    else:
-        ax.text(0.5, 1.05, f'({numbers[index]})', ha='center', transform=ax.transAxes, fontsize=12)
+        ax.text(0.5, 1.05, r'$n=60$', ha='center', transform=ax.transAxes, fontsize=12)    
     
     ax.tick_params(axis='x', labelsize=12)
     ax.tick_params(axis='y', labelsize=12)
     ax.set_xlabel( ax.get_xlabel(), fontsize=12)
     ax.set_ylabel( ax.get_ylabel(), fontsize=12)
     
-numbers = [ 'd', 'e', 'f' ]
 for index, ax in enumerate([ ax3, ax4, ax8 ]):
-    ax.text(0.5, 1.05, f'({numbers[index]}) ' + r'$p = \log(n/2) / (n/2)$', ha='center', transform=ax.transAxes, fontsize=12)    
+    ax.text(0.5, 1.05, r'$p = \log(n/2) / (n/2), \langle k \rangle \approx \log(\frac{n}{2})$', ha='center', transform=ax.transAxes, fontsize=12)    
     ax.tick_params(axis='x', labelsize=12)
     ax.tick_params(axis='y', labelsize=12)
     ax.set_xlabel( ax.get_xlabel(), fontsize=12)
     ax.set_ylabel( ax.get_ylabel(), fontsize=12)
     # ax.legend(loc='lower left', fontsize=8, ncol=2)
     
-numbers = [ 'g', 'h', 'i' ]
 for index, ax in enumerate([ ax5, ax6, ax9 ]):
-    ax.text(0.5, 1.05, f'({numbers[index]}) ' + r'$p = 1/2$', ha='center', transform=ax.transAxes, fontsize=12)    
+    ax.text(0.5, 1.05, r'$p = 1/2, \langle k \rangle \approx n/4$', ha='center', transform=ax.transAxes, fontsize=12)    
     ax.tick_params(axis='x', labelsize=12)
     ax.tick_params(axis='y', labelsize=12)
     ax.set_xlabel( ax.get_xlabel(), fontsize=12)
